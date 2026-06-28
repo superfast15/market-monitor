@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LEAPS Monitor</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #0d1117; color: #fff; padding: 20px; max-width: 600px; margin: 0 auto; }
+    h1 { color: #58a6ff; }
+    .card { background: #161b22; border-radius: 10px; padding: 15px; margin: 10px 0; }
+    .price { font-size: 2em; font-weight: bold; }
+    .up { color: #3fb950; }
+    .down { color: #f85149; }
+    .alert { background: #f85149; color: #fff; border-radius: 8px; padding: 10px; margin: 5px 0; font-weight: bold; }
+    .normal { color: #8b949e; }
+    .time { font-size: 0.8em; color: #8b949e; }
+  </style>
+</head>
+<body>
+  <h1>📈 LEAPS Signal Monitor</h1>
+  <div class="card" id="latest">Loading...</div>
+  <h2>History</h2>
+  <div id="history"></div>
+
+  <script>
+    fetch('data.json?t=' + Date.now())
+      .then(r => r.json())
+      .then(data => {
+        const latest = data[0];
+        const changeClass = latest.change_pct < 0 ? 'down' : 'up';
+        const sign = latest.change_pct > 0 ? '+' : '';
+
+        document.getElementById('latest').innerHTML = `
+          <div class="price">SPY $${latest.price}</div>
+          <div class="${changeClass}">${sign}${latest.change_pct}% today</div>
+          ${latest.alert ? `<div class="alert">🚨 ${latest.alert}</div>` : '<div class="normal">✅ No action needed</div>'}
+          <div class="time">Last checked: ${latest.time}</div>
+        `;
+
+        const historyHTML = data.slice(1).map(entry => {
+          const cls = entry.change_pct < 0 ? 'down' : 'up';
+          const s = entry.change_pct > 0 ? '+' : '';
+          return `<div class="card">
+            <span class="${cls}">SPY $${entry.price} (${s}${entry.change_pct}%)</span>
+            ${entry.alert ? `<div class="alert">🚨 ${entry.alert}</div>` : ''}
+            <div class="time">${entry.time}</div>
+          </div>`;
+        }).join('');
+
+        document.getElementById('history').innerHTML = historyHTML;
+      })
+      .catch(() => {
+        document.getElementById('latest').innerHTML = 'No data yet — waiting for first run.';
+      });
+  </script>
+</body>
+</html>
