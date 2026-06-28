@@ -5,52 +5,160 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LEAPS Monitor</title>
   <style>
-    body { font-family: Arial, sans-serif; background: #0d1117; color: #fff; padding: 20px; max-width: 600px; margin: 0 auto; }
+    body { font-family: Arial, sans-serif; background: #0d1117; color: #fff; padding: 20px; max-width: 700px; margin: 0 auto; }
     h1 { color: #58a6ff; }
+    h2 { color: #58a6ff; border-bottom: 1px solid #21262d; padding-bottom: 6px; margin-top: 30px; }
     .card { background: #161b22; border-radius: 10px; padding: 15px; margin: 10px 0; }
-    .price { font-size: 2em; font-weight: bold; }
+    .symbol { font-size: 1.4em; font-weight: bold; }
+    .price { font-size: 1.6em; font-weight: bold; }
     .up { color: #3fb950; }
     .down { color: #f85149; }
-    .alert { background: #f85149; color: #fff; border-radius: 8px; padding: 10px; margin: 5px 0; font-weight: bold; }
+    .flat { color: #8b949e; }
+    .signal { background: #21262d; border-left: 3px solid #f85149; border-radius: 4px; padding: 8px 10px; margin: 6px 0; font-size: 0.9em; }
     .normal { color: #8b949e; }
-    .time { font-size: 0.8em; color: #8b949e; }
+    .option { background: #0d2231; border: 1px solid #1f6feb; border-radius: 6px; padding: 10px; margin: 8px 0; }
+    .option-head { font-weight: bold; color: #58a6ff; margin-bottom: 6px; }
+    .greeks { display: grid; grid-template-columns: repeat(auto-fit, minmax(70px, 1fr)); gap: 6px; }
+    .greek { background: #161b22; border-radius: 5px; padding: 6px; text-align: center; font-size: 0.85em; }
+    .greek b { display: block; color: #8b949e; font-weight: normal; font-size: 0.85em; }
+    .est-note { font-size: 0.72em; color: #8b949e; margin-top: 6px; font-style: italic; }
+    .time { font-size: 0.8em; color: #8b949e; margin-top: 8px; }
+    .vix { background: #161b22; border-radius: 10px; padding: 12px 15px; margin: 10px 0; font-weight: bold; }
+    .meta { font-size: 0.85em; color: #8b949e; }
+    .hist-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #21262d; font-size: 0.9em; }
   </style>
 </head>
 <body>
   <h1>📈 LEAPS Signal Monitor</h1>
-  <div class="card" id="latest">Loading...</div>
+  <div id="vix"></div>
+  <div id="latest">Loading…</div>
   <h2>History</h2>
   <div id="history"></div>
 
   <script>
+    // Build a DOM element with text content set safely (no HTML injection).
+    function el(tag, className, text) {
+      const e = document.createElement(tag);
+      if (className) e.className = className;
+      if (text !== undefined && text !== null) e.textContent = text;
+      return e;
+    }
+
+    function changeClass(pct) {
+      if (pct > 0) return 'up';
+      if (pct < 0) return 'down';
+      return 'flat';
+    }
+
+    function fmtChange(pct) {
+      const sign = pct > 0 ? '+' : '';
+      return `${sign}${pct}%`;
+    }
+
+    function greekBox(label, value) {
+      const g = el('div', 'greek');
+      g.appendChild(el('b', null, label));
+      g.appendChild(el('span', null, value));
+      return g;
+    }
+
+    function renderOption(opt) {
+      const box = el('div', 'option');
+      box.appendChild(el('div', 'option-head',
+        `🎯 LEAPS ${opt.type} · strike $${opt.strike} · ~$${opt.price}/share ($${(opt.price * 100).toFixed(0)}/contract)`));
+
+      const greeks = el('div', 'greeks');
+      greeks.appendChild(greekBox('Delta', opt.delta));
+      greeks.appendChild(greekBox('Gamma', opt.gamma));
+      greeks.appendChild(greekBox('Theta/day', opt.theta));
+      greeks.appendChild(greekBox('Vega', opt.vega));
+      greeks.appendChild(greekBox('Rho', opt.rho));
+      greeks.appendChild(greekBox('IV used', (opt.iv * 100).toFixed(0) + '%'));
+      box.appendChild(greeks);
+
+      box.appendChild(el('div', 'est-note',
+        'Estimated via Black-Scholes — assumptions, not live option quotes. Verify with your broker.'));
+      return box;
+    }
+
+    function renderLatest(entry) {
+      const vixBox = document.getElementById('vix');
+      vixBox.innerHTML = '';
+      if (entry.vix !== null && entry.vix !== undefined) {
+        vixBox.appendChild(el('div', 'vix', `VIX ${entry.vix} — ${entry.vix_signal || ''}`));
+      }
+
+      const container = document.getElementById('latest');
+      container.innerHTML = '';
+      container.appendChild(el('div', 'meta', `Last checked: ${entry.time}`));
+
+      const rows = entry.data || [];
+      if (rows.length === 0) {
+        container.appendChild(el('div', 'normal', 'No symbols returned data on the last run.'));
+        return;
+      }
+
+      rows.forEach(row => {
+        const card = el('div', 'card');
+        card.appendChild(el('span', 'symbol', `${row.symbol} `));
+        card.appendChild(el('span', 'price', `$${row.price}`));
+
+        const change = el('div', changeClass(row.change_pct),
+          `${fmtChange(row.change_pct)} today  ·  ${row.drop_from_high}% below 52w high`);
+        card.appendChild(change);
+
+        const signals = row.signals || [];
+        if (signals.length === 0) {
+          card.appendChild(el('div', 'normal', '✅ No action needed'));
+        } else {
+          signals.forEach(s => card.appendChild(el('div', 'signal', s)));
+        }
+
+        if (row.option) card.appendChild(renderOption(row.option));
+
+        container.appendChild(card);
+      });
+    }
+
+    function renderHistory(entries) {
+      const container = document.getElementById('history');
+      container.innerHTML = '';
+      if (entries.length === 0) {
+        container.appendChild(el('div', 'normal', 'No past runs yet.'));
+        return;
+      }
+      entries.forEach(entry => {
+        const card = el('div', 'card');
+        card.appendChild(el('div', 'time', entry.time));
+        (entry.data || []).forEach(row => {
+          const r = el('div', 'hist-row');
+          r.appendChild(el('span', null, row.symbol));
+          const right = el('span', changeClass(row.change_pct),
+            `$${row.price}  (${fmtChange(row.change_pct)})`);
+          r.appendChild(right);
+          card.appendChild(r);
+        });
+        container.appendChild(card);
+      });
+    }
+
     fetch('data.json?t=' + Date.now())
-      .then(r => r.json())
+      .then(r => {
+        if (!r.ok) throw new Error('fetch failed');
+        return r.json();
+      })
       .then(data => {
-        const latest = data[0];
-        const changeClass = latest.change_pct < 0 ? 'down' : 'up';
-        const sign = latest.change_pct > 0 ? '+' : '';
-
-        document.getElementById('latest').innerHTML = `
-          <div class="price">SPY $${latest.price}</div>
-          <div class="${changeClass}">${sign}${latest.change_pct}% today</div>
-          ${latest.alert ? `<div class="alert">🚨 ${latest.alert}</div>` : '<div class="normal">✅ No action needed</div>'}
-          <div class="time">Last checked: ${latest.time}</div>
-        `;
-
-        const historyHTML = data.slice(1).map(entry => {
-          const cls = entry.change_pct < 0 ? 'down' : 'up';
-          const s = entry.change_pct > 0 ? '+' : '';
-          return `<div class="card">
-            <span class="${cls}">SPY $${entry.price} (${s}${entry.change_pct}%)</span>
-            ${entry.alert ? `<div class="alert">🚨 ${entry.alert}</div>` : ''}
-            <div class="time">${entry.time}</div>
-          </div>`;
-        }).join('');
-
-        document.getElementById('history').innerHTML = historyHTML;
+        if (!Array.isArray(data) || data.length === 0) {
+          document.getElementById('latest').textContent =
+            'No data yet — waiting for first run.';
+          return;
+        }
+        renderLatest(data[0]);
+        renderHistory(data.slice(1));
       })
       .catch(() => {
-        document.getElementById('latest').innerHTML = 'No data yet — waiting for first run.';
+        document.getElementById('latest').textContent =
+          'No data yet — waiting for first run.';
       });
   </script>
 </body>

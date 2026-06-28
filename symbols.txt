@@ -1,0 +1,38 @@
+# Market Monitor watchlist
+# ---------------------------------------------
+# One ticker symbol per line. The monitor reads this file every run,
+# so you can change what it watches just by editing this list and
+# committing the change on GitHub. No code editing required.
+#
+# Rules:
+#   - One symbol per line (e.g. AAPL)
+#   - Blank lines are ignored
+#   - Lines starting with # are comments and are ignored
+#   - Symbols are not case-sensitive (aapl and AAPL both work)
+#
+# OPTIONAL — set the implied volatility used for the Greeks:
+#   Add a number after the ticker, e.g.   NVDA 0.50
+#   That means "use 50% IV for NVDA's option estimate."
+#   If you leave it off, the script falls back to the VIX level,
+#   then to a default. IV is the single biggest assumption behind
+#   the Greeks, so single stocks (which are more volatile than the
+#   index) are worth setting by hand for better estimates.
+#
+#   Rough IV ballparks: broad-market ETFs ~0.12-0.20,
+#   large stable stocks ~0.20-0.30, hot/volatile names ~0.40-0.70.
+#
+# To add a stock: type its ticker on a new line.
+# To stop watching one: delete its line (or put a # in front of it).
+# ---------------------------------------------
+
+SPY
+QQQ
+AAPL  0.28
+NVDA  0.50
+MSFT  0.25
+ORLY  0.25
+SPYM
+SMH   0.35
+NEE   0.25
+LLY   0.35
+CAT   0.28
