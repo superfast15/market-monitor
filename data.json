@@ -1,5 +1,250 @@
 [
   {
+    "time": "2026-06-29 01:21",
+    "vix": null,
+    "vix_signal": null,
+    "data": [
+      {
+        "symbol": "SPY",
+        "price": 728.99,
+        "change_pct": -0.72,
+        "drop_from_high": 4.1,
+        "high_52w": 760.4,
+        "signals": [],
+        "option": {
+          "type": "12-month call",
+          "strike": 730,
+          "expiry_months": 12,
+          "iv": 0.3,
+          "price": 99.78,
+          "delta": 0.61,
+          "gamma": 0.0018,
+          "theta": -0.153,
+          "vega": 2.797,
+          "rho": 3.447
+        }
+      },
+      {
+        "symbol": "QQQ",
+        "price": 706.52,
+        "change_pct": -1.38,
+        "drop_from_high": 5.6,
+        "high_52w": 748.65,
+        "signals": [
+          "\ud83d\udcca DOWN 5.6% FROM HIGH \u2014 Watch for more weakness."
+        ],
+        "option": {
+          "type": "12-month call",
+          "strike": 705,
+          "expiry_months": 12,
+          "iv": 0.3,
+          "price": 97.89,
+          "delta": 0.614,
+          "gamma": 0.0018,
+          "theta": -0.148,
+          "vega": 2.702,
+          "rho": 3.361
+        }
+      },
+      {
+        "symbol": "AAPL",
+        "price": 283.78,
+        "change_pct": 3.14,
+        "drop_from_high": 10.6,
+        "high_52w": 317.4,
+        "signals": [
+          "\u26a0\ufe0f DOWN 10.6% FROM HIGH \u2014 Sweet spot. 12-month LEAPS."
+        ],
+        "option": {
+          "type": "12-month call",
+          "strike": 285,
+          "expiry_months": 12,
+          "iv": 0.28,
+          "price": 36.27,
+          "delta": 0.605,
+          "gamma": 0.0048,
+          "theta": -0.057,
+          "vega": 1.092,
+          "rho": 1.356
+        }
+      },
+      {
+        "symbol": "NVDA",
+        "price": 192.53,
+        "change_pct": -1.64,
+        "drop_from_high": 18.6,
+        "high_52w": 236.54,
+        "signals": [
+          "\u26a0\ufe0f DOWN 18.6% FROM HIGH \u2014 Sweet spot. 12-month LEAPS."
+        ],
+        "option": {
+          "type": "12-month call",
+          "strike": 193,
+          "expiry_months": 12,
+          "iv": 0.5,
+          "price": 40.96,
+          "delta": 0.627,
+          "gamma": 0.0039,
+          "theta": -0.059,
+          "vega": 0.729,
+          "rho": 0.798
+        }
+      },
+      {
+        "symbol": "MSFT",
+        "price": 372.97,
+        "change_pct": 5.71,
+        "drop_from_high": 32.9,
+        "high_52w": 555.45,
+        "signals": [
+          "\ud83d\udea8 DOWN 32.9% FROM HIGH \u2014 MAJOR opportunity. 2-year LEAPS."
+        ],
+        "option": {
+          "type": "24-month call",
+          "strike": 375,
+          "expiry_months": 24,
+          "iv": 0.25,
+          "price": 64.96,
+          "delta": 0.651,
+          "gamma": 0.0028,
+          "theta": -0.053,
+          "vega": 1.952,
+          "rho": 3.556
+        }
+      },
+      {
+        "symbol": "ORLY",
+        "price": 89.55,
+        "change_pct": 3.05,
+        "drop_from_high": 17.6,
+        "high_52w": 108.72,
+        "signals": [
+          "\u26a0\ufe0f DOWN 17.6% FROM HIGH \u2014 Sweet spot. 12-month LEAPS."
+        ],
+        "option": {
+          "type": "12-month call",
+          "strike": 90,
+          "expiry_months": 12,
+          "iv": 0.25,
+          "price": 10.38,
+          "delta": 0.604,
+          "gamma": 0.0172,
+          "theta": -0.017,
+          "vega": 0.345,
+          "rho": 0.438
+        }
+      },
+      {
+        "symbol": "SPYM",
+        "price": 85.76,
+        "change_pct": -0.64,
+        "drop_from_high": 4.2,
+        "high_52w": 89.52,
+        "signals": [],
+        "option": {
+          "type": "12-month call",
+          "strike": 86,
+          "expiry_months": 12,
+          "iv": 0.3,
+          "price": 11.68,
+          "delta": 0.608,
+          "gamma": 0.0149,
+          "theta": -0.018,
+          "vega": 0.33,
+          "rho": 0.405
+        }
+      },
+      {
+        "symbol": "SMH",
+        "price": 611.61,
+        "change_pct": -3.97,
+        "drop_from_high": 9.0,
+        "high_52w": 671.83,
+        "signals": [
+          "\u26a0\ufe0f DAILY -4.0% \u2014 Notable drop. Monitor closely.",
+          "\ud83d\udcca DOWN 9.0% FROM HIGH \u2014 Watch for more weakness."
+        ],
+        "option": {
+          "type": "12-month call",
+          "strike": 610,
+          "expiry_months": 12,
+          "iv": 0.35,
+          "price": 96.57,
+          "delta": 0.617,
+          "gamma": 0.0018,
+          "theta": -0.143,
+          "vega": 2.335,
+          "rho": 2.806
+        }
+      },
+      {
+        "symbol": "NEE",
+        "price": 88.56,
+        "change_pct": 0.98,
+        "drop_from_high": 10.3,
+        "high_52w": 98.75,
+        "signals": [
+          "\u26a0\ufe0f DOWN 10.3% FROM HIGH \u2014 Sweet spot. 12-month LEAPS."
+        ],
+        "option": {
+          "type": "12-month call",
+          "strike": 89,
+          "expiry_months": 12,
+          "iv": 0.25,
+          "price": 10.27,
+          "delta": 0.605,
+          "gamma": 0.0174,
+          "theta": -0.016,
+          "vega": 0.341,
+          "rho": 0.433
+        }
+      },
+      {
+        "symbol": "LLY",
+        "price": 1208.12,
+        "change_pct": 7.13,
+        "drop_from_high": 0.6,
+        "high_52w": 1215.76,
+        "signals": [],
+        "option": {
+          "type": "12-month call",
+          "strike": 1210,
+          "expiry_months": 12,
+          "iv": 0.35,
+          "price": 188.43,
+          "delta": 0.612,
+          "gamma": 0.0009,
+          "theta": -0.282,
+          "vega": 4.628,
+          "rho": 5.511
+        }
+      },
+      {
+        "symbol": "CAT",
+        "price": 997.47,
+        "change_pct": -5.63,
+        "drop_from_high": 5.6,
+        "high_52w": 1057.07,
+        "signals": [
+          "\ud83d\udea8 SINGLE DAY -5.6% \u2014 Big daily drop. Watch for continuation.",
+          "\ud83d\udcca DOWN 5.6% FROM HIGH \u2014 Watch for more weakness."
+        ],
+        "option": {
+          "type": "12-month call",
+          "strike": 995,
+          "expiry_months": 12,
+          "iv": 0.28,
+          "price": 130.73,
+          "delta": 0.615,
+          "gamma": 0.0014,
+          "theta": -0.199,
+          "vega": 3.814,
+          "rho": 4.825
+        }
+      }
+    ]
+  },
+  {
     "time": "2026-06-28 23:23",
     "vix": null,
     "vix_signal": null,
