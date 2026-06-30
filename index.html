@@ -16,6 +16,9 @@
     .flat { color: #8b949e; }
     .signal { background: #21262d; border-left: 3px solid #f85149; border-radius: 4px; padding: 8px 10px; margin: 6px 0; font-size: 0.9em; }
     .normal { color: #8b949e; }
+    .trend { border-radius: 6px; padding: 8px 10px; margin: 8px 0; font-size: 0.9em; font-weight: bold; }
+    .trend-up { background: #0f2a16; border: 1px solid #238636; color: #3fb950; }
+    .trend-down { background: #2a0f0f; border: 1px solid #b62324; color: #f85149; }
     .option { background: #0d2231; border: 1px solid #1f6feb; border-radius: 6px; padding: 10px; margin: 8px 0; }
     .option-head { font-weight: bold; color: #58a6ff; margin-bottom: 6px; }
     .greeks { display: grid; grid-template-columns: repeat(auto-fit, minmax(70px, 1fr)); gap: 6px; }
@@ -106,6 +109,12 @@
         const change = el('div', changeClass(row.change_pct),
           `${fmtChange(row.change_pct)} today  ·  ${row.drop_from_high}% below 52w high`);
         card.appendChild(change);
+
+        if (row.trend) {
+          const t = el('div', 'trend ' + (row.trend.above_sma200 ? 'trend-up' : 'trend-down'),
+            row.trend.label);
+          card.appendChild(t);
+        }
 
         const signals = row.signals || [];
         if (signals.length === 0) {
