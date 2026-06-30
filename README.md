@@ -1,3 +1,4 @@
+[README.md](https://github.com/user-attachments/files/29489484/README.md)
 # Market Monitor
 
 A lightweight LEAPS-signal monitor. It checks a watchlist of stocks/ETFs a few
@@ -129,8 +130,23 @@ the 52-week high, and emits plain-language flags:
 It also pulls the **VIX** once per run as a market-wide volatility gauge
 (low / elevated / high).
 
-> These thresholds are heuristics, not backtested signals. A stock can be far off
-> its high and keep falling. Treat the output as "here's what dropped," not "buy this."
+### 200-day trend filter
+For each ticker the script also fetches the **200-day moving average** and tags
+the name:
+
+- **✅ Above the 200-day line** — the long-term uptrend is intact, so a pullback
+  is more likely a buyable dip.
+- **⛔ Below the 200-day line** — the trend may be broken; a drawdown here is
+  higher-risk ("catching a falling knife").
+
+This is the most important piece of context: a big drop *in an uptrend* is a very
+different setup from the same drop *in a downtrend*. The dashboard colors the tag
+green or red accordingly. (Stocks without 200 days of history simply show no tag.)
+
+> These thresholds are heuristics, not backtested signals. The 200-day filter
+> improves context but is still a lagging indicator — a stock can sit above it and
+> fall, or reclaim it after a crash. Treat the output as "here's what dropped and
+> where the trend stands," not "buy this."
 
 ---
 
@@ -195,7 +211,8 @@ You can also trigger a run anytime from **Actions → Market Monitor → Run wor
   minutes (or rarely skip one) during heavy load. Fine for periodic checks; don't
   rely on a reading at the exact closing bell.
 - **API limits.** The Twelve Data free tier allows ~8 requests/minute and a daily
-  cap. The script spaces its calls out to stay under the per-minute limit; if you
-  grow the watchlist a lot, keep the daily cap in mind.
+  cap. Each ticker now uses **two** calls per run (the quote + the 200-day average),
+  plus one for VIX. The script spaces calls out to stay under the per-minute limit;
+  if you grow the watchlist a lot, keep the daily cap in mind.
 - **Invalid tickers** are skipped with an error line in the run log rather than
   crashing the whole run.
