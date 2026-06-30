@@ -17,6 +17,7 @@ SYMBOLS_FILE = 'symbols.txt'
 HISTORY_FILE = 'data.json'
 MAX_HISTORY = 50
 REQUEST_DELAY = 8  # seconds between API calls (free tier ~8 req/min)
+SMA_PERIOD = 200   # 200-day moving average for the long-term trend filter
 
 # ---- Option-modeling assumptions (Black-Scholes) -------------------
 # These drive the LEAPS call estimate + Greeks. They are ASSUMPTIONS,
@@ -201,6 +202,52 @@ def get_quote(symbol):
     }
 
 
+def get_sma(symbol, period=SMA_PERIOD):
+    """Fetch the N-day simple moving average from Twelve Data's /sma endpoint.
+    Returns a float, or None if unavailable (e.g. a young stock without
+    enough history). Never raises — the trend filter is optional context."""
+    if not API_KEY:
+        return None
+    url = (f'https://api.twelvedata.com/sma?symbol={symbol}'
+           f'&interval=1day&time_period={period}&apikey={API_KEY}')
+    try:
+        r = requests.get(url, timeout=15)
+        data = r.json()
+    except (requests.RequestException, ValueError) as e:
+        print(f"Warning: could not fetch {period}-day SMA for {symbol}: {e}")
+        return None
+
+    if isinstance(data, dict) and data.get('status') == 'error':
+        print(f"Warning: SMA error for {symbol}: {data.get('message', data)}")
+        return None
+
+    try:
+        return float(data['values'][0]['sma'])
+    except (KeyError, IndexError, TypeError, ValueError):
+        print(f"Warning: no {period}-day SMA data for {symbol}.")
+        return None
+
+
+def trend_status(current, sma):
+    """Compare price to the 200-day SMA. Returns a dict describing the
+    long-term trend, or None if the SMA is unavailable."""
+    if sma is None or sma <= 0:
+        return None
+    pct_vs_sma = ((current - sma) / sma) * 100
+    if current >= sma:
+        label = f"✅ UPTREND — {pct_vs_sma:+.1f}% above 200-day avg. Dips are buyable."
+        ok = True
+    else:
+        label = f"⛔ BELOW 200-DAY ({pct_vs_sma:+.1f}%) — trend may be broken. Higher risk."
+        ok = False
+    return {
+        'sma200': round(sma, 2),
+        'pct_vs_sma200': round(pct_vs_sma, 1),
+        'above_sma200': ok,
+        'label': label,
+    }
+
+
 def get_vix():
     """Return (vix_level, signal_text). Returns (None, None) on failure."""
     try:
@@ -303,12 +350,18 @@ def run():
     for symbol, symbol_iv in symbols:
         try:
             q = get_quote(symbol)
+            time.sleep(REQUEST_DELAY)  # space the next call (SMA) under the limit
+            sma = get_sma(symbol)
+            trend = trend_status(q['current'], sma)
+
             signals = analyze_leaps(q['change_pct'], q['drop_from_high'])
             iv = pick_iv(symbol_iv, vix_level)
             option = model_option(q['current'], q['drop_from_high'], iv)
 
             print(f"\n{symbol}: ${q['current']:.2f} | Day: {q['change_pct']:.2f}% "
                   f"| From 52w High: -{q['drop_from_high']:.1f}%")
+            if trend:
+                print(f"  {trend['label']}")
             if option:
                 print(f"  LEAPS {option['type']} @ ${option['strike']} "
                       f"(IV {option['iv']*100:.0f}%): est ${option['price']} | "
@@ -325,6 +378,7 @@ def run():
                 'high_52w': round(q['high_52w'], 2),
                 'signals': signals,
                 'option': option,
+                'trend': trend,
             })
         except APIError as e:
             print(f"Error fetching {symbol}: {e}")
