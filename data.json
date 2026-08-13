@@ -1,5 +1,310 @@
 [
   {
+    "time": "2026-08-13 14:38",
+    "vix": null,
+    "vix_signal": null,
+    "data": [
+      {
+        "symbol": "SPY",
+        "price": 779.24,
+        "change_pct": 0.87,
+        "drop_from_high": 0.0,
+        "high_52w": 779.37,
+        "signals": [],
+        "option": {
+          "type": "12-month call",
+          "strike": 780,
+          "expiry_months": 12,
+          "iv": 0.3,
+          "price": 106.81,
+          "delta": 0.61,
+          "gamma": 0.0016,
+          "theta": -0.163,
+          "vega": 2.989,
+          "rho": 3.688
+        },
+        "trend": {
+          "sma200": 705.01,
+          "pct_vs_sma200": 10.5,
+          "above_sma200": true,
+          "label": "\u2705 UPTREND \u2014 +10.5% above 200-day avg. Dips are buyable."
+        }
+      },
+      {
+        "symbol": "QQQ",
+        "price": 733.52,
+        "change_pct": 1.36,
+        "drop_from_high": 2.0,
+        "high_52w": 748.65,
+        "signals": [],
+        "option": {
+          "type": "12-month call",
+          "strike": 735,
+          "expiry_months": 12,
+          "iv": 0.3,
+          "price": 100.19,
+          "delta": 0.609,
+          "gamma": 0.0017,
+          "theta": -0.154,
+          "vega": 2.816,
+          "rho": 3.465
+        },
+        "trend": {
+          "sma200": 650.11,
+          "pct_vs_sma200": 12.8,
+          "above_sma200": true,
+          "label": "\u2705 UPTREND \u2014 +12.8% above 200-day avg. Dips are buyable."
+        }
+      },
+      {
+        "symbol": "AAPL",
+        "price": 305.28,
+        "change_pct": 1.0,
+        "drop_from_high": 11.4,
+        "high_52w": 344.57,
+        "signals": [
+          "\u26a0\ufe0f DOWN 11.4% FROM HIGH \u2014 Sweet spot. 12-month LEAPS."
+        ],
+        "option": {
+          "type": "12-month call",
+          "strike": 305,
+          "expiry_months": 12,
+          "iv": 0.28,
+          "price": 39.78,
+          "delta": 0.613,
+          "gamma": 0.0045,
+          "theta": -0.061,
+          "vega": 1.169,
+          "rho": 1.472
+        },
+        "trend": {
+          "sma200": 280.3,
+          "pct_vs_sma200": 8.9,
+          "above_sma200": true,
+          "label": "\u2705 UPTREND \u2014 +8.9% above 200-day avg. Dips are buyable."
+        }
+      },
+      {
+        "symbol": "NVDA",
+        "price": 226.46,
+        "change_pct": 1.06,
+        "drop_from_high": 4.3,
+        "high_52w": 236.54,
+        "signals": [],
+        "option": {
+          "type": "12-month call",
+          "strike": 225,
+          "expiry_months": 12,
+          "iv": 0.5,
+          "price": 49.01,
+          "delta": 0.634,
+          "gamma": 0.0033,
+          "theta": -0.069,
+          "vega": 0.852,
+          "rho": 0.946
+        },
+        "trend": {
+          "sma200": 194.76,
+          "pct_vs_sma200": 16.3,
+          "above_sma200": true,
+          "label": "\u2705 UPTREND \u2014 +16.3% above 200-day avg. Dips are buyable."
+        }
+      },
+      {
+        "symbol": "MSFT",
+        "price": 498.62,
+        "change_pct": 1.26,
+        "drop_from_high": 10.0,
+        "high_52w": 553.72,
+        "signals": [
+          "\ud83d\udcca DOWN 10.0% FROM HIGH \u2014 Watch for more weakness."
+        ],
+        "option": {
+          "type": "12-month call",
+          "strike": 500,
+          "expiry_months": 12,
+          "iv": 0.25,
+          "price": 58.34,
+          "delta": 0.608,
+          "gamma": 0.0031,
+          "theta": -0.092,
+          "vega": 1.916,
+          "rho": 2.448
+        },
+        "trend": {
+          "sma200": 432.67,
+          "pct_vs_sma200": 15.2,
+          "above_sma200": true,
+          "label": "\u2705 UPTREND \u2014 +15.2% above 200-day avg. Dips are buyable."
+        }
+      },
+      {
+        "symbol": "ORLY",
+        "price": 93.29,
+        "change_pct": 1.35,
+        "drop_from_high": 14.2,
+        "high_52w": 108.72,
+        "signals": [
+          "\u26a0\ufe0f DOWN 14.2% FROM HIGH \u2014 Sweet spot. 12-month LEAPS."
+        ],
+        "option": {
+          "type": "12-month call",
+          "strike": 93,
+          "expiry_months": 12,
+          "iv": 0.25,
+          "price": 11.19,
+          "delta": 0.617,
+          "gamma": 0.0164,
+          "theta": -0.017,
+          "vega": 0.356,
+          "rho": 0.464
+        },
+        "trend": {
+          "sma200": 92.74,
+          "pct_vs_sma200": 0.6,
+          "above_sma200": true,
+          "label": "\u2705 UPTREND \u2014 +0.6% above 200-day avg. Dips are buyable."
+        }
+      },
+      {
+        "symbol": "SPYM",
+        "price": 91.71,
+        "change_pct": 0.85,
+        "drop_from_high": 0.0,
+        "high_52w": 91.73,
+        "signals": [],
+        "option": {
+          "type": "12-month call",
+          "strike": 92,
+          "expiry_months": 12,
+          "iv": 0.3,
+          "price": 12.48,
+          "delta": 0.608,
+          "gamma": 0.014,
+          "theta": -0.019,
+          "vega": 0.353,
+          "rho": 0.432
+        },
+        "trend": {
+          "sma200": 82.96,
+          "pct_vs_sma200": 10.5,
+          "above_sma200": true,
+          "label": "\u2705 UPTREND \u2014 +10.5% above 200-day avg. Dips are buyable."
+        }
+      },
+      {
+        "symbol": "SMH",
+        "price": 595.58,
+        "change_pct": 1.84,
+        "drop_from_high": 11.3,
+        "high_52w": 671.83,
+        "signals": [
+          "\u26a0\ufe0f DOWN 11.3% FROM HIGH \u2014 Sweet spot. 12-month LEAPS."
+        ],
+        "option": {
+          "type": "12-month call",
+          "strike": 595,
+          "expiry_months": 12,
+          "iv": 0.35,
+          "price": 93.58,
+          "delta": 0.615,
+          "gamma": 0.0018,
+          "theta": -0.139,
+          "vega": 2.277,
+          "rho": 2.726
+        },
+        "trend": {
+          "sma200": 460.93,
+          "pct_vs_sma200": 29.2,
+          "above_sma200": true,
+          "label": "\u2705 UPTREND \u2014 +29.2% above 200-day avg. Dips are buyable."
+        }
+      },
+      {
+        "symbol": "NEE",
+        "price": 86.12,
+        "change_pct": 0.4,
+        "drop_from_high": 12.8,
+        "high_52w": 98.75,
+        "signals": [
+          "\u26a0\ufe0f DOWN 12.8% FROM HIGH \u2014 Sweet spot. 12-month LEAPS."
+        ],
+        "option": {
+          "type": "12-month call",
+          "strike": 86,
+          "expiry_months": 12,
+          "iv": 0.25,
+          "price": 10.25,
+          "delta": 0.614,
+          "gamma": 0.0178,
+          "theta": -0.016,
+          "vega": 0.329,
+          "rho": 0.427
+        },
+        "trend": {
+          "sma200": 87.76,
+          "pct_vs_sma200": -1.9,
+          "above_sma200": false,
+          "label": "\u26d4 BELOW 200-DAY (-1.9%) \u2014 trend may be broken. Higher risk."
+        }
+      },
+      {
+        "symbol": "LLY",
+        "price": 1222.63,
+        "change_pct": 0.19,
+        "drop_from_high": 2.1,
+        "high_52w": 1249.45,
+        "signals": [],
+        "option": {
+          "type": "12-month call",
+          "strike": 1225,
+          "expiry_months": 12,
+          "iv": 0.35,
+          "price": 190.48,
+          "delta": 0.612,
+          "gamma": 0.0009,
+          "theta": -0.286,
+          "vega": 4.685,
+          "rho": 5.574
+        },
+        "trend": {
+          "sma200": 1041.52,
+          "pct_vs_sma200": 17.4,
+          "above_sma200": true,
+          "label": "\u2705 UPTREND \u2014 +17.4% above 200-day avg. Dips are buyable."
+        }
+      },
+      {
+        "symbol": "CAT",
+        "price": 856.56,
+        "change_pct": 0.11,
+        "drop_from_high": 20.2,
+        "high_52w": 1073.46,
+        "signals": [
+          "\ud83d\udea8 DOWN 20.2% FROM HIGH \u2014 Strong entry. 18-month LEAPS."
+        ],
+        "option": {
+          "type": "18-month call",
+          "strike": 855,
+          "expiry_months": 18,
+          "iv": 0.28,
+          "price": 140.61,
+          "delta": 0.637,
+          "gamma": 0.0013,
+          "theta": -0.145,
+          "vega": 3.934,
+          "rho": 6.082
+        },
+        "trend": {
+          "sma200": 752.76,
+          "pct_vs_sma200": 13.8,
+          "above_sma200": true,
+          "label": "\u2705 UPTREND \u2014 +13.8% above 200-day avg. Dips are buyable."
+        }
+      }
+    ]
+  },
+  {
     "time": "2026-08-12 20:38",
     "vix": null,
     "vix_signal": null,
@@ -15131,315 +15436,6 @@
           "pct_vs_sma200": 19.3,
           "above_sma200": true,
           "label": "\u2705 UPTREND \u2014 +19.3% above 200-day avg. Dips are buyable."
-        }
-      }
-    ]
-  },
-  {
-    "time": "2026-07-27 18:55",
-    "vix": null,
-    "vix_signal": null,
-    "data": [
-      {
-        "symbol": "SPY",
-        "price": 738.54,
-        "change_pct": -0.05,
-        "drop_from_high": 2.9,
-        "high_52w": 760.4,
-        "signals": [],
-        "option": {
-          "type": "12-month call",
-          "strike": 740,
-          "expiry_months": 12,
-          "iv": 0.3,
-          "price": 100.88,
-          "delta": 0.609,
-          "gamma": 0.0017,
-          "theta": -0.155,
-          "vega": 2.836,
-          "rho": 3.489
-        },
-        "trend": {
-          "sma200": 698.89,
-          "pct_vs_sma200": 5.7,
-          "above_sma200": true,
-          "label": "\u2705 UPTREND \u2014 +5.7% above 200-day avg. Dips are buyable."
-        }
-      },
-      {
-        "symbol": "QQQ",
-        "price": 680.97,
-        "change_pct": -0.48,
-        "drop_from_high": 9.0,
-        "high_52w": 748.65,
-        "signals": [
-          "\ud83d\udcca DOWN 9.0% FROM HIGH \u2014 Watch for more weakness."
-        ],
-        "option": {
-          "type": "12-month call",
-          "strike": 680,
-          "expiry_months": 12,
-          "iv": 0.3,
-          "price": 94.12,
-          "delta": 0.613,
-          "gamma": 0.0019,
-          "theta": -0.143,
-          "vega": 2.606,
-          "rho": 3.236
-        },
-        "trend": {
-          "sma200": 643.56,
-          "pct_vs_sma200": 5.8,
-          "above_sma200": true,
-          "label": "\u2705 UPTREND \u2014 +5.8% above 200-day avg. Dips are buyable."
-        }
-      },
-      {
-        "symbol": "AAPL",
-        "price": 336.17,
-        "change_pct": 0.95,
-        "drop_from_high": 1.0,
-        "high_52w": 339.55,
-        "signals": [],
-        "option": {
-          "type": "12-month call",
-          "strike": 335,
-          "expiry_months": 12,
-          "iv": 0.28,
-          "price": 44.22,
-          "delta": 0.616,
-          "gamma": 0.0041,
-          "theta": -0.067,
-          "vega": 1.284,
-          "rho": 1.629
-        },
-        "trend": {
-          "sma200": 276.38,
-          "pct_vs_sma200": 21.6,
-          "above_sma200": true,
-          "label": "\u2705 UPTREND \u2014 +21.6% above 200-day avg. Dips are buyable."
-        }
-      },
-      {
-        "symbol": "NVDA",
-        "price": 197.59,
-        "change_pct": -4.47,
-        "drop_from_high": 16.5,
-        "high_52w": 236.54,
-        "signals": [
-          "\u26a0\ufe0f DAILY -4.5% \u2014 Notable drop. Monitor closely.",
-          "\u26a0\ufe0f DOWN 16.5% FROM HIGH \u2014 Sweet spot. 12-month LEAPS."
-        ],
-        "option": {
-          "type": "12-month call",
-          "strike": 198,
-          "expiry_months": 12,
-          "iv": 0.5,
-          "price": 42.07,
-          "delta": 0.628,
-          "gamma": 0.0038,
-          "theta": -0.06,
-          "vega": 0.748,
-          "rho": 0.82
-        },
-        "trend": {
-          "sma200": 192.97,
-          "pct_vs_sma200": 2.4,
-          "above_sma200": true,
-          "label": "\u2705 UPTREND \u2014 +2.4% above 200-day avg. Dips are buyable."
-        }
-      },
-      {
-        "symbol": "MSFT",
-        "price": 393.87,
-        "change_pct": 3.19,
-        "drop_from_high": 29.1,
-        "high_52w": 555.45,
-        "signals": [
-          "\ud83d\udea8 DOWN 29.1% FROM HIGH \u2014 Strong entry. 18-month LEAPS."
-        ],
-        "option": {
-          "type": "18-month call",
-          "strike": 395,
-          "expiry_months": 18,
-          "iv": 0.25,
-          "price": 58.33,
-          "delta": 0.633,
-          "gamma": 0.0031,
-          "theta": -0.062,
-          "vega": 1.817,
-          "rho": 2.865
-        },
-        "trend": {
-          "sma200": 435.47,
-          "pct_vs_sma200": -9.6,
-          "above_sma200": false,
-          "label": "\u26d4 BELOW 200-DAY (-9.6%) \u2014 trend may be broken. Higher risk."
-        }
-      },
-      {
-        "symbol": "ORLY",
-        "price": 91.46,
-        "change_pct": 4.65,
-        "drop_from_high": 15.9,
-        "high_52w": 108.72,
-        "signals": [
-          "\u26a0\ufe0f DOWN 15.9% FROM HIGH \u2014 Sweet spot. 12-month LEAPS."
-        ],
-        "option": {
-          "type": "12-month call",
-          "strike": 91,
-          "expiry_months": 12,
-          "iv": 0.25,
-          "price": 11.06,
-          "delta": 0.62,
-          "gamma": 0.0167,
-          "theta": -0.017,
-          "vega": 0.348,
-          "rho": 0.456
-        },
-        "trend": {
-          "sma200": 93.35,
-          "pct_vs_sma200": -2.0,
-          "above_sma200": false,
-          "label": "\u26d4 BELOW 200-DAY (-2.0%) \u2014 trend may be broken. Higher risk."
-        }
-      },
-      {
-        "symbol": "SPYM",
-        "price": 86.98,
-        "change_pct": 0.02,
-        "drop_from_high": 2.8,
-        "high_52w": 89.52,
-        "signals": [],
-        "option": {
-          "type": "12-month call",
-          "strike": 87,
-          "expiry_months": 12,
-          "iv": 0.3,
-          "price": 11.95,
-          "delta": 0.611,
-          "gamma": 0.0147,
-          "theta": -0.018,
-          "vega": 0.333,
-          "rho": 0.412
-        },
-        "trend": {
-          "sma200": 82.24,
-          "pct_vs_sma200": 5.8,
-          "above_sma200": true,
-          "label": "\u2705 UPTREND \u2014 +5.8% above 200-day avg. Dips are buyable."
-        }
-      },
-      {
-        "symbol": "SMH",
-        "price": 544.7,
-        "change_pct": -2.94,
-        "drop_from_high": 18.9,
-        "high_52w": 671.83,
-        "signals": [
-          "\u26a0\ufe0f DOWN 18.9% FROM HIGH \u2014 Sweet spot. 12-month LEAPS."
-        ],
-        "option": {
-          "type": "12-month call",
-          "strike": 545,
-          "expiry_months": 12,
-          "iv": 0.35,
-          "price": 85.21,
-          "delta": 0.613,
-          "gamma": 0.002,
-          "theta": -0.127,
-          "vega": 2.085,
-          "rho": 2.488
-        },
-        "trend": {
-          "sma200": 446.72,
-          "pct_vs_sma200": 21.9,
-          "above_sma200": true,
-          "label": "\u2705 UPTREND \u2014 +21.9% above 200-day avg. Dips are buyable."
-        }
-      },
-      {
-        "symbol": "NEE",
-        "price": 88.66,
-        "change_pct": -1.25,
-        "drop_from_high": 10.2,
-        "high_52w": 98.75,
-        "signals": [
-          "\u26a0\ufe0f DOWN 10.2% FROM HIGH \u2014 Sweet spot. 12-month LEAPS."
-        ],
-        "option": {
-          "type": "12-month call",
-          "strike": 89,
-          "expiry_months": 12,
-          "iv": 0.25,
-          "price": 10.32,
-          "delta": 0.606,
-          "gamma": 0.0174,
-          "theta": -0.016,
-          "vega": 0.341,
-          "rho": 0.434
-        },
-        "trend": {
-          "sma200": 87.61,
-          "pct_vs_sma200": 1.2,
-          "above_sma200": true,
-          "label": "\u2705 UPTREND \u2014 +1.2% above 200-day avg. Dips are buyable."
-        }
-      },
-      {
-        "symbol": "LLY",
-        "price": 1199.05,
-        "change_pct": 0.25,
-        "drop_from_high": 4.0,
-        "high_52w": 1249.45,
-        "signals": [],
-        "option": {
-          "type": "12-month call",
-          "strike": 1200,
-          "expiry_months": 12,
-          "iv": 0.35,
-          "price": 187.43,
-          "delta": 0.613,
-          "gamma": 0.0009,
-          "theta": -0.28,
-          "vega": 4.59,
-          "rho": 5.475
-        },
-        "trend": {
-          "sma200": 1017.9,
-          "pct_vs_sma200": 17.8,
-          "above_sma200": true,
-          "label": "\u2705 UPTREND \u2014 +17.8% above 200-day avg. Dips are buyable."
-        }
-      },
-      {
-        "symbol": "CAT",
-        "price": 859.5,
-        "change_pct": -3.29,
-        "drop_from_high": 19.9,
-        "high_52w": 1073.46,
-        "signals": [
-          "\u26a0\ufe0f DAILY -3.3% \u2014 Notable drop. Monitor closely.",
-          "\u26a0\ufe0f DOWN 19.9% FROM HIGH \u2014 Sweet spot. 12-month LEAPS."
-        ],
-        "option": {
-          "type": "12-month call",
-          "strike": 860,
-          "expiry_months": 12,
-          "iv": 0.28,
-          "price": 111.38,
-          "delta": 0.611,
-          "gamma": 0.0016,
-          "theta": -0.172,
-          "vega": 3.296,
-          "rho": 4.134
-        },
-        "trend": {
-          "sma200": 731.81,
-          "pct_vs_sma200": 17.4,
-          "above_sma200": true,
-          "label": "\u2705 UPTREND \u2014 +17.4% above 200-day avg. Dips are buyable."
         }
       }
     ]
